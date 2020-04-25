@@ -1,0 +1,56 @@
+{%extends 'shop/basic.html'%}
+
+{%block title%} {{product.product_name}}{%endblock%}
+{%block  CSS%}{%endblock%}
+{%block body%}
+<div class="container my-4">
+    <div class="row" >
+    <div class="col-md-4">
+         <div class="row " >
+             <img src="/media/{{product.product_image}}" width="223" height="234">
+         </div>
+        <div class="btn btn-primary my-4 mx-2">buy now</div>
+        <div class="btn btn-primary">Add to cart</div>
+    </div>
+<div class="col-md-8">
+     <h5>{{product.product_name}}</h5>
+     <h5><b>Rs.{{product.price}}</b></h5>
+     <h5>{{product.category}}</h5>
+     <p>{{product.desc}}
+     </p>
+</div>
+</div>
+    </div>
+{%endblock%}
+{%block js%}
+<script>
+<!--    console.log("Amiruddin bhai Kiya ho raha hai aajkal");-->
+    if (localStorage.getItem('cart')==null){
+    var cart={};
+    }
+    else
+    {
+    cart= JSON.parse(localStorage.getItem('cart'));
+    document.getElementById('cart').innerHTML = Object.keys(cart).length;
+
+
+    }
+$ ('.cart').click(function(){
+console.log('kam Ho gaya beta');
+var idstr=this.id.toString();
+console.log(idstr);
+if(cart[idstr]!=undefined){
+cart[idstr]=cart[idstr]+1;
+}
+else
+{
+cart[idstr]=1;
+}
+console.log(cart);
+localStorage.setItem('cart',JSON.stringify(cart));
+document.getElementById('cart').innerHTML = Object.keys(cart).length;
+});
+$('#popcart').popover();
+document.getElementById("popcart").setAttribute('data-content' , '<h5>cart</h5>');
+</script>
+{%endblock%}

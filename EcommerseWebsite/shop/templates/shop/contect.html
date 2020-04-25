@@ -1,0 +1,26 @@
+{%extends 'shop/basic.html'%}
+{%block title%} this is about of title{%endblock%}
+{%block  CSS%}{%endblock%}
+{%block body%}
+<div class="container my-4">
+    <h2>Contect Us</h2>
+    <form action="contect" method="post">{%csrf_token%}
+    <div class="form-group">
+      <label for="name">name</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
+  </div>
+        <div class="form-group">
+      <label for="name">Email</label>
+      <input type="email" class="form-control" id="email" name="email" placeholder="Enter your Email">
+  </div>
+        <div class="form-group">
+      <label for="name">phone</label>
+      <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your mobile number">
+  </div>
+        <div class="form-group">
+      <label for="textareaforform">description</label>
+            <textarea type="desc" class="form-control" id="desc" name="desc" placeholder="Enter your description" rows="3"></textarea>
+  </div>
+        <button type="submit" class="btn btn-success">Sign in</button>
+</form>
+{%endblock%}
